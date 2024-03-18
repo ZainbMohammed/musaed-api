@@ -5,7 +5,8 @@ const verifyToken = require('../moddlewares/verifyToken');
 
 // get all users
 router.route('/')
-        .get(verifyToken,userControllers.getAllUsers)
+        .get(userControllers.getAllUsers)
+        // .get(verifyToken,userControllers.getAllUsers)
   
 // register 
 router.route('/register')
