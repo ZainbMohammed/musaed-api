@@ -1,7 +1,7 @@
 
 const express = require('express');
 var cors = require('cors')
-const dbConnection = require('./DB/dbConnection');
+const dbConnection = require('./conficDB/dbConnection');
 const usersRouter = require('./src/routers/users.routers');
 const httpStatusText = require('./src/utils/httpStatusText');
 

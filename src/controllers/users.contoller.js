@@ -13,7 +13,7 @@ const getAllUsers = async (req,res)=>{
 
 const register = async(req,res)=>{
     try{
-        const {userName, email, password, } = req.body;
+        const {firstName, lastName, email, password, role} = req.body;
         const oldUser = await User.findOne({email:email});
 
         if(oldUser){
