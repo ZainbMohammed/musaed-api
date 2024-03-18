@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dbConnection = async () => {
     try {
       // Connect to the MongoDB cluster
-      await mongoose.connect("mongodb+srv://asma:asma1010@cluster0.ca5xjkp.mongodb.net/musaedDB?retryWrites=true&w=majority&appName=Cluster0");
+      await mongoose.connect('mongodb+srv://asma:asma1010@cluster0.ca5xjkp.mongodb.net/musaedDB?retryWrites=true&w=majority&appName=Cluster0');
       console.log("Mongoose is connected successful");
     } catch (e) {
       // connection faield

@@ -12,35 +12,36 @@ const getAllUsers = async (req,res)=>{
 
 
 const register = async(req,res)=>{
-    try{
-        const {firstName, lastName, email, password, role} = req.body;
-        const oldUser = await User.findOne({email:email});
+    console.log(req.body);
+    // try{
+    //     const {firstName, lastName, email, password, role} = req.body;
+    //     const oldUser = await User.findOne({email:email});
 
-        if(oldUser){
-            return res.status(400).json({status: httpStatusText.FAIL,Message: "User is alerady exit"});
-        }
+    //     if(oldUser){
+    //         return res.status(400).json({status: httpStatusText.FAIL,Message: "User is alerady exit"});
+    //     }
 
-        // password hashing
-        const hashedPassword = await bcrypt.hash(password,10);
-        const newUser = new User({
-            firstName,
-            lastName,
-            email,
-            password: hashedPassword,
-            role
-        });
+    //     // password hashing
+    //     const hashedPassword = await bcrypt.hash(password,10);
+    //     const newUser = new User({
+    //         firstName,
+    //         lastName,
+    //         email,
+    //         password: hashedPassword,
+    //         role
+    //     });
         
-        // generate jwt token
-        const token = await generateJWT({email: newUser.email, id: newUser._id, role: newUser.role});
-        // console.log("token ==>",token);
-        newUser.token = token;
-        await newUser.save();
+    //     // generate jwt token
+    //     const token = await generateJWT({email: newUser.email, id: newUser._id, role: newUser.role});
+    //     // console.log("token ==>",token);
+    //     newUser.token = token;
+    //     await newUser.save();
 
-        return res.status(201).json({status: httpStatusText.SUCCESS,data: {course:newUser}})
+    //     return res.status(201).json({status: httpStatusText.SUCCESS,data: {course:newUser}})
 
-    }catch(error){
-        return res.status(400).json({status: httpStatusText.ERROR, Message: error.Message});
-    }
+    // }catch(error){
+    //     return res.status(400).json({status: httpStatusText.ERROR, Message: error.Message});
+    // }
 }
 const login = async (req,res)=>{
     // console.log(req.body);

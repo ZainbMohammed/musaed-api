@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors()); // to solve cors policy 'Cross Origin Resourse Sharing'
 app.use(express.json());
-app.use('/musaed/users',usersRouter);
+app.use('',usersRouter);
 
 // connect to db
 dbConnection();
@@ -18,6 +18,10 @@ dbConnection();
 app.all('*',(req,res,next)=>{
     return res.json({status:httpStatusText.ERROR,Message:'This resourse is not available'});
   })
+
+app.get("/",(req,res)=>{
+  res.send('heloo');
+})
 app.listen(process.env.PORT,()=>{
     console.log('app listing on port 3000');
 })
